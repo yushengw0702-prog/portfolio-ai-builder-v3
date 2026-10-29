@@ -93,6 +93,7 @@
   .cover-meta{margin-top:34px;display:flex;flex-direction:column;gap:10px}
   .cover-meta div{display:flex;align-items:center;gap:12px;font-size:14px;color:var(--ink-soft)}
   .cover-meta span.k{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);width:74px;flex:none}
+  .cover-personal{margin-top:20px;display:flex;flex-wrap:wrap;gap:5px 18px;font-size:12px;line-height:1.6;color:var(--muted)}
   .cover-index{margin:52px 0 12px;padding:18px 22px 14px;background:rgba(255,255,255,.76);border:1px solid rgba(216,216,209,.86);border-radius:8px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
   .cover-index-head{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--muted);margin-bottom:8px}
   .cover-index-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:16px}
@@ -642,6 +643,8 @@ function buildProject(s){
 }
 
 function buildCover(){
+  const today = new Date();
+  const age = today.getFullYear() - 2001 - (today.getMonth() < 6 ? 1 : 0);
   const coverDots = COVER_IMAGES.map((_,i)=>`<button class="cover-dot${i===0?" active":""}" data-cover-goto="${i}" aria-label="切换到封面图 ${i+1}"></button>`).join("");
   const projectLinks = DECK.map((s,i)=>({s,i})).filter(({s})=>s.type==="project"||s.type==="visual")
     .map(({s,i})=>`<button class="cover-index-link" data-jump="${i}"><span class="n">${String(i).padStart(2,"0")}</span><span class="t">${titleOf(s)}</span></button>`).join("");
@@ -656,6 +659,11 @@ function buildCover(){
         <div><span class="k">Now</span>深圳 · 点猫科技（编程猫）创新业务 · AI 产品经理</div>
         <div><span class="k">Focus</span>AI Native · 智能硬件 · 体验验证 · 业务价值</div>
         <div><span class="k">Contact</span>yushengw0702@gmail.com</div>
+      </div>
+      <div class="cover-personal" aria-label="个人信息">
+        <span>${age} 岁 · 2001.07 Born</span>
+        <span>MBTI 猜测 · ENTP</span>
+        <span>旅行 · 科幻电影 · 独立游戏</span>
       </div>
     </div>
     <div class="cover-r">
