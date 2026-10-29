@@ -683,6 +683,7 @@ function buildCover(){
 const AWARDS = [
   {year:"2026",brand:"Anker",logo:"",title:"首届黑客松挑战赛 决赛入围 · 队长"},
   {year:"2023",brand:"Apple",logo:"apple.png",title:"移动应用创新赛 总决赛二等奖"},
+  {year:"2022",brand:"Apple",logo:"apple.png",title:"移动应用创新赛 总决赛三等奖"},
   {year:"2022",brand:"百度",logo:"baidu.png",title:"人工智能创意赛 总决赛二等奖"},
   {year:"2022",brand:"腾讯",logo:"tencent.png",title:"高校游戏创意制作大赛 总决赛优胜奖"},
   {year:"2022",brand:"歌尔",logo:"goertek.png",title:"「歌尔杯」高校 AR/VR 挑战赛 总决赛二等奖"},
@@ -756,7 +757,7 @@ function buildVisual(){
 }
 
 function buildHonors(){
-  const product = ["2023 Apple 移动应用创新赛二等奖","2022 百度人工智能创意赛二等奖","2022 腾讯高校游戏创意制作大赛优胜奖","2022 「歌尔杯」高校 AR/VR 挑战赛二等奖","2021 腾讯高校游戏创意制作大赛优胜奖"];
+  const product = ["2023 Apple 移动应用创新赛二等奖","2022 Apple 移动应用创新赛总决赛三等奖","2022 百度人工智能创意赛二等奖","2022 腾讯高校游戏创意制作大赛优胜奖","2022 「歌尔杯」高校 AR/VR 挑战赛二等奖","2021 腾讯高校游戏创意制作大赛优胜奖"];
   const visual = ["第十七届墨西哥国际海报双年展银奖（世界五大海报展）","2023 俄罗斯金蜜蜂平面设计双年展入选","2023 第六届波兰点布林国际海报双年展入展","2023 第二届韩国国际海报展 Top 100","2022 靳埭强设计奖入选奖","第四届温州国际设计双年展金奖","2024 俄罗斯金龟节 ECO-Poster 单元国际评审"];
   const li = arr=>arr.map(x=>`<li>${x}</li>`).join("");
   return `<div class="wrap">
