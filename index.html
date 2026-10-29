@@ -81,11 +81,15 @@
   /* ---------- COVER ---------- */
   .cover{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(24px,4vw,64px);align-items:center}
   .cover-l h1{
-    font-size:clamp(34px,5.4vw,68px);line-height:1.04;letter-spacing:-.02em;font-weight:640;
+    line-height:1.14;letter-spacing:0;font-weight:640;
     margin:22px 0 20px;
   }
-  .cover-l h1 em{font-style:normal;color:var(--accent)}
-  .cover-lead{font-size:clamp(15px,1.5vw,19px);color:var(--ink-soft);max-width:34ch}
+  .cover-l h1 span{display:block}
+  .cover-title-main{font-size:62px}
+  .cover-title-main em{font-style:normal;color:var(--accent)}
+  .cover-title-line{font-size:40px}
+  .cover-title-last{font-size:29px;color:var(--accent);margin-top:7px}
+  .cover-lead{font-size:17px;color:var(--ink-soft);max-width:38ch}
   .cover-meta{margin-top:34px;display:flex;flex-direction:column;gap:10px}
   .cover-meta div{display:flex;align-items:center;gap:12px;font-size:14px;color:var(--ink-soft)}
   .cover-meta span.k{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);width:74px;flex:none}
@@ -304,6 +308,10 @@
     .award-list{grid-template-columns:repeat(2,minmax(0,1fr))}
   }
   @media(max-width:620px){
+    .cover-title-main{font-size:44px}
+    .cover-title-line{font-size:30px}
+    .cover-title-last{font-size:23px}
+    .cover-lead{font-size:15px}
     .dock{height:62px;gap:8px}
     .nav-btn{padding:8px 10px;gap:5px;font-size:12px;white-space:nowrap}
     .nav-btn .now{display:none}
@@ -320,6 +328,9 @@
     .map-key{display:flex;flex-wrap:wrap;gap:5px 12px;margin-top:12px;color:var(--muted);font-size:11px}
   }
   @media(max-width:360px){
+    .cover-title-main{font-size:38px}
+    .cover-title-line{font-size:26px}
+    .cover-title-last{font-size:21px}
     .cover-index-grid{grid-template-columns:1fr}
     .cover-index-link{min-height:42px}
   }
@@ -638,12 +649,12 @@ function buildCover(){
     .map(({s,i})=>`<button data-jump="${i}">${titleOf(s)}</button>`).join("");
   return `<div class="wrap"><div class="cover">
     <div class="cover-l">
-      <span class="eyebrow">Wang Yusheng · AI Builder / Product</span>
-      <h1>把 <em>AI 能力</em><br>做成真实可用的产品</h1>
-      <p class="cover-lead">聚焦 AI Builder：从用户场景和需求出发，定义 AI 功能、设计策略与交互，再通过测试和反馈持续优化产品体验。</p>
+      <span class="eyebrow">AI / Product / Interaction</span>
+      <h1><span class="cover-title-main"><em>X</em> Builder</span><span class="cover-title-line">探索 AI Native 体验</span><span class="cover-title-last">科技向善 · Well-Being</span></h1>
+      <p class="cover-lead">从真实用户场景出发，探索 AI Native 交互与智能硬件。以需求洞察、原型测试和效果验收推动产品落地，同时衡量体验改善与商业价值。</p>
       <div class="cover-meta">
         <div><span class="k">Now</span>深圳 · 点猫科技（编程猫）创新业务 · AI 产品经理</div>
-        <div><span class="k">Focus</span>AI Agent · 智能硬件 · 功能策略 · 体验迭代</div>
+        <div><span class="k">Focus</span>AI Native · 智能硬件 · 体验验证 · 业务价值</div>
         <div><span class="k">Contact</span>yushengw0702@gmail.com</div>
       </div>
     </div>
@@ -657,7 +668,7 @@ function buildCover(){
         <div class="cover-dots">${coverDots}</div>
         <div class="frame"></div>
       </div>
-      <div class="badge"><b>AI Builder · Product Thinking</b><br><span>需求洞察 · 功能设计 · 效果验收 · 持续迭代</span></div>
+      <div class="badge"><b>X Builder · Product Thinking</b><br><span>需求洞察 · 原型设计 · 效果验收 · 持续迭代</span></div>
     </div>
   </div>
     ${buildHomeSections()}
