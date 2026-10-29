@@ -79,7 +79,7 @@
   .wrap{width:100%;max-width:1220px;margin:0 auto}
 
   /* ---------- COVER ---------- */
-  .cover{display:grid;grid-template-columns:1.15fr .85fr;grid-template-rows:minmax(0,1fr) auto;gap:20px clamp(24px,4vw,64px);align-items:center;min-height:100%}
+  .cover{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(24px,4vw,64px);align-items:center}
   .cover-l h1{
     font-size:clamp(34px,5.4vw,68px);line-height:1.04;letter-spacing:-.02em;font-weight:640;
     margin:22px 0 20px;
@@ -89,7 +89,7 @@
   .cover-meta{margin-top:34px;display:flex;flex-direction:column;gap:10px}
   .cover-meta div{display:flex;align-items:center;gap:12px;font-size:14px;color:var(--ink-soft)}
   .cover-meta span.k{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);width:74px;flex:none}
-  .cover-index{grid-column:1/-1;padding:18px 22px 14px;background:rgba(255,255,255,.76);border:1px solid rgba(216,216,209,.86);border-radius:8px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+  .cover-index{margin:52px 0 12px;padding:18px 22px 14px;background:rgba(255,255,255,.76);border:1px solid rgba(216,216,209,.86);border-radius:8px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
   .cover-index-head{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--muted);margin-bottom:8px}
   .cover-index-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:16px}
   .cover-index-link{display:flex;align-items:flex-start;gap:9px;width:100%;min-width:0;min-height:54px;padding:11px 2px;text-align:left;border:0;border-bottom:1px solid var(--line);background:none;color:var(--ink);cursor:pointer;font:500 13px/1.38 var(--sans);transition:color .2s}
@@ -129,6 +129,7 @@
   .badge span{color:#9fa8ff}
 
   /* ---------- ABOUT ---------- */
+  .home-background{margin-top:64px}
   .sec-head{max-width:760px}
   .sec-head h2{font-size:clamp(24px,3vw,38px);line-height:1.12;letter-spacing:-.015em;font-weight:620;margin:16px 0 14px}
   .sec-head p{color:var(--ink-soft);font-size:clamp(14px,1.4vw,16.5px)}
@@ -141,8 +142,8 @@
   .cap-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
   .chip{font-size:12.5px;color:var(--ink-soft);border:1px solid var(--line-strong);background:var(--card);border-radius:999px;padding:7px 14px}
   .chip.hot{background:var(--dark);color:#fff;border-color:var(--dark)}
-  .about-awards{margin-top:26px;border-top:1px solid var(--line-strong);padding-top:18px}
-  .about-awards h3{font-size:15px;font-weight:620;margin-bottom:12px}
+  .about-awards{margin-top:52px;border-top:1px solid var(--line-strong);padding-top:26px}
+  .about-awards .sec-head{margin-bottom:18px}
   .award-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px 14px}
   .award-item{display:grid;grid-template-columns:86px minmax(0,1fr);gap:12px;align-items:center;min-height:66px;padding:8px 12px;background:var(--card);border:1px solid var(--line);border-radius:8px}
   .award-logo{width:86px;height:42px;display:flex;align-items:center;justify-content:center}
@@ -292,9 +293,7 @@
   .lb-count{position:absolute;top:24px;left:26px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:#a9a9b4}
 
   @media(max-width:900px){
-    .cover{grid-template-columns:1fr;grid-template-rows:auto;gap:24px}
-    .cover-index{grid-column:1;order:1}
-    .cover-r{order:2}
+    .cover{grid-template-columns:1fr;gap:24px}
     .cover-index-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
     .about-grid{grid-template-columns:1fr 1fr}
     .honor-grid{grid-template-columns:1fr}
@@ -311,6 +310,8 @@
     .dots{gap:5px}
     .dot{width:5px;height:5px}
     .cover-index{padding:16px}
+    .home-background{margin-top:48px}
+    .about-grid{grid-template-columns:1fr}
     .cover-index-grid{column-gap:12px}
     .cover-index-link{min-height:56px;padding:9px 2px;font-size:12.5px}
     .award-list{grid-template-columns:1fr}
@@ -333,7 +334,7 @@
       <small>Portfolio 2026</small>
     </a>
     <div class="hud-right">
-      <span class="counter"><b id="cNow">01</b> / <span id="cTot">12</span></span>
+      <span class="counter"><b id="cNow">01</b> / <span id="cTot">11</span></span>
     </div>
   </header>
 
@@ -383,7 +384,6 @@ const VISUAL_EXHIBITIONS = [
 /* ---------------- DECK DATA ---------------- */
 const DECK = [
   { type:"cover" },
-  { type:"about" },
 
   { type:"project", kind:"重点项目 · 安克黑客松", index:"01",
     title:"Anker 黑客松 · Home Pulse",
@@ -564,7 +564,6 @@ let slides = [];
 
 function titleOf(s){
   if(s.type==="cover") return "封面 · Cover";
-  if(s.type==="about") return "背景 · Background";
   if(s.type==="visual") return "视觉艺术 全球参展";
   if(s.type==="honors") return "荣誉与入选";
   if(s.type==="contact") return "联系 · Contact";
@@ -635,7 +634,7 @@ function buildCover(){
   const coverDots = COVER_IMAGES.map((_,i)=>`<button class="cover-dot${i===0?" active":""}" data-cover-goto="${i}" aria-label="切换到封面图 ${i+1}"></button>`).join("");
   const projectLinks = DECK.map((s,i)=>({s,i})).filter(({s})=>s.type==="project"||s.type==="visual")
     .map(({s,i})=>`<button class="cover-index-link" data-jump="${i}"><span class="n">${String(i).padStart(2,"0")}</span><span class="t">${titleOf(s)}</span></button>`).join("");
-  const moreLinks = DECK.map((s,i)=>({s,i})).filter(({s})=>["about","honors","contact"].includes(s.type))
+  const moreLinks = DECK.map((s,i)=>({s,i})).filter(({s})=>["honors","contact"].includes(s.type))
     .map(({s,i})=>`<button data-jump="${i}">${titleOf(s)}</button>`).join("");
   return `<div class="wrap"><div class="cover">
     <div class="cover-l">
@@ -660,12 +659,14 @@ function buildCover(){
       </div>
       <div class="badge"><b>AI Builder · Product Thinking</b><br><span>需求洞察 · 功能设计 · 效果验收 · 持续迭代</span></div>
     </div>
+  </div>
+    ${buildHomeSections()}
     <nav class="cover-index" aria-label="作品集项目索引">
       <div class="cover-index-head">项目索引 / PROJECTS</div>
       <div class="cover-index-grid">${projectLinks}</div>
       <div class="cover-index-more">${moreLinks}</div>
     </nav>
-  </div></div>`;
+  </div>`;
 }
 
 const AWARDS = [
@@ -677,7 +678,7 @@ const AWARDS = [
   {year:"2021",brand:"腾讯",logo:"tencent.png",title:"高校游戏创意制作大赛 总决赛优胜奖"}
 ];
 
-function buildAbout(){
+function buildHomeSections(){
   const exp = [
     {l:"2025.10 - 至今",t:"深圳点猫科技（编程猫）创新业务部 · AI 产品经理",b:"面向儿童创造场景，参与 AI Agent 与智能硬件结合的功能定义、原型设计与体验验证。"},
     {l:"2024.8 - 2025.8",t:"香港科技大学（广州）· 人机交互科研助理 · 实习",b:"参与人机交互相关研究，关注用户、场景与交互体验之间的关系。"},
@@ -690,20 +691,20 @@ function buildAbout(){
     <div class="award-logo">${a.logo?`<img class="${a.brand==="Apple"?"apple":""}" src="${A}brands/${a.logo}" alt="${a.brand} logo">`:`<span class="award-wordmark">${a.brand}</span>`}</div>
     <div class="award-copy"><b>${a.year}</b><p>${a.brand==="歌尔"?"":a.brand+" "}${a.title}</p></div>
   </article>`).join("");
-  return `<div class="wrap">
+  return `<section class="home-background" aria-label="背景">
     <div class="sec-head">
       <span class="eyebrow">Background</span>
-      <h2>教育经历与产品荣誉</h2>
+      <h2>背景</h2>
       <p>我关注 AI 能力在具体场景中的可用性：收集并分析用户需求，定义功能场景与产品方案，设计测试集、AI 策略、交互和用户教育；上线前验收算法与功能效果，上线后结合主观体验、用户反馈和 badcase 推动数据、算法、功能与体验的闭环迭代。</p>
     </div>
     <div class="about-grid">${exp}</div>
     <div class="cap-row">${caps}</div>
-    <div class="about-awards">
-      <h3>产品与技术荣誉</h3>
+  </section>
+    <section class="about-awards" aria-label="荣誉">
+      <div class="sec-head"><span class="eyebrow">Recognition</span><h2>荣誉</h2></div>
       <div class="award-list">${awards}</div>
       <p class="award-note">……更多荣誉暂未列出，以上仅展示部分奖项。</p>
-    </div>
-  </div>`;
+    </section>`;
 }
 
 const MARKERS = [
@@ -776,7 +777,6 @@ DECK.forEach((s,i)=>{
   el.className="slide";
   el.dataset.i=i;
   if(s.type==="cover") el.innerHTML=buildCover();
-  else if(s.type==="about") el.innerHTML=buildAbout();
   else if(s.type==="visual") el.innerHTML=buildVisual();
   else if(s.type==="honors") el.innerHTML=buildHonors();
   else if(s.type==="contact") el.innerHTML=buildContact();
