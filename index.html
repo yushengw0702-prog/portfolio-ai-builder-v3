@@ -58,12 +58,6 @@
   .hud-right{display:flex;align-items:center;gap:18px}
   .counter{font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--muted)}
   .counter b{color:var(--ink);font-weight:600}
-  .menu-btn{
-    font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
-    border:1px solid var(--line-strong);background:var(--card);color:var(--ink-soft);
-    padding:8px 14px;border-radius:999px;cursor:pointer;transition:.2s;
-  }
-  .menu-btn:hover{border-color:var(--ink);color:var(--ink)}
 
   /* progress bar */
   .progress{position:fixed;top:0;left:0;height:2px;background:var(--accent);z-index:50;transition:width .45s cubic-bezier(.4,0,.1,1)}
@@ -85,7 +79,7 @@
   .wrap{width:100%;max-width:1220px;margin:0 auto}
 
   /* ---------- COVER ---------- */
-  .cover{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(24px,4vw,64px);align-items:center;min-height:100%}
+  .cover{display:grid;grid-template-columns:1.15fr .85fr;grid-template-rows:minmax(0,1fr) auto;gap:20px clamp(24px,4vw,64px);align-items:center;min-height:100%}
   .cover-l h1{
     font-size:clamp(34px,5.4vw,68px);line-height:1.04;letter-spacing:-.02em;font-weight:640;
     margin:22px 0 20px;
@@ -95,8 +89,17 @@
   .cover-meta{margin-top:34px;display:flex;flex-direction:column;gap:10px}
   .cover-meta div{display:flex;align-items:center;gap:12px;font-size:14px;color:var(--ink-soft)}
   .cover-meta span.k{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);width:74px;flex:none}
-  .cover-hint{margin-top:40px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--muted);display:flex;align-items:center;gap:10px}
-  .kbd{border:1px solid var(--line-strong);border-radius:6px;padding:2px 8px;background:var(--card);font-size:12px;color:var(--ink)}
+  .cover-index{grid-column:1/-1;padding:18px 22px 14px;background:rgba(255,255,255,.76);border:1px solid rgba(216,216,209,.86);border-radius:8px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+  .cover-index-head{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--muted);margin-bottom:8px}
+  .cover-index-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:16px}
+  .cover-index-link{display:flex;align-items:flex-start;gap:9px;width:100%;min-width:0;min-height:54px;padding:11px 2px;text-align:left;border:0;border-bottom:1px solid var(--line);background:none;color:var(--ink);cursor:pointer;font:500 13px/1.38 var(--sans);transition:color .2s}
+  .cover-index-link:hover,.cover-index-link:focus-visible{color:var(--accent-ink)}
+  .cover-index-link:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .cover-index-link .n{flex:none;font:11px/1.6 var(--mono);color:var(--accent)}
+  .cover-index-link .t{min-width:0;overflow-wrap:anywhere}
+  .cover-index-more{display:flex;flex-wrap:wrap;gap:8px 22px;padding-top:12px}
+  .cover-index-more button{border:0;background:none;color:var(--muted);font:12px var(--sans);cursor:pointer}
+  .cover-index-more button:hover,.cover-index-more button:focus-visible{color:var(--accent-ink);text-decoration:underline;text-underline-offset:3px}
   .cover-r{position:relative}
   .cover-carousel{position:relative;border-radius:var(--radius);overflow:hidden;background:var(--card)}
   .cover-r img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--radius);display:block;filter:saturate(1.02);transition:opacity .22s ease}
@@ -272,23 +275,6 @@
   .dot.active{background:var(--accent);transform:scale(1.35)}
   .dot:hover{background:var(--muted)}
 
-  /* ---------- INDEX MENU ---------- */
-  .scrim{position:fixed;inset:0;background:rgba(17,17,20,.4);backdrop-filter:blur(3px);z-index:60;opacity:0;visibility:hidden;transition:.3s}
-  .scrim.open{opacity:1;visibility:visible}
-  .index-menu{
-    position:fixed;top:0;right:0;bottom:0;width:min(400px,86vw);background:var(--card);z-index:70;
-    transform:translateX(100%);transition:transform .38s cubic-bezier(.4,0,.1,1);
-    padding:26px 24px;overflow-y:auto;box-shadow:-30px 0 60px -30px rgba(0,0,0,.4)
-  }
-  .index-menu.open{transform:none}
-  .index-menu h3{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:18px}
-  .idx-item{display:flex;gap:14px;align-items:baseline;width:100%;text-align:left;background:none;border:none;cursor:pointer;padding:13px 8px;border-radius:10px;transition:.18s;border-bottom:1px solid var(--line)}
-  .idx-item:hover{background:var(--paper)}
-  .idx-item .n{font-family:var(--mono);font-size:11px;color:var(--faint);flex:none;width:26px}
-  .idx-item .tt{font-size:14.5px;color:var(--ink);font-weight:500;line-height:1.3}
-  .idx-item .tk{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-top:4px}
-  .idx-item.active .tt{color:var(--accent)}
-
   /* ---------- LIGHTBOX ---------- */
   .lb{position:fixed;inset:0;background:rgba(12,12,15,.94);z-index:90;display:none;align-items:center;justify-content:center;flex-direction:column}
   .lb.open{display:flex}
@@ -306,8 +292,10 @@
   .lb-count{position:absolute;top:24px;left:26px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:#a9a9b4}
 
   @media(max-width:900px){
-    .cover{grid-template-columns:1fr;gap:26px}
-    .cover-r{order:-1}
+    .cover{grid-template-columns:1fr;grid-template-rows:auto;gap:24px}
+    .cover-index{grid-column:1;order:1}
+    .cover-r{order:2}
+    .cover-index-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
     .about-grid{grid-template-columns:1fr 1fr}
     .honor-grid{grid-template-columns:1fr}
     .p-top{flex-direction:column}
@@ -317,10 +305,22 @@
     .award-list{grid-template-columns:repeat(2,minmax(0,1fr))}
   }
   @media(max-width:620px){
+    .dock{height:62px;gap:8px}
+    .nav-btn{padding:8px 10px;gap:5px;font-size:12px;white-space:nowrap}
+    .nav-btn .now{display:none}
+    .dots{gap:5px}
+    .dot{width:5px;height:5px}
+    .cover-index{padding:16px}
+    .cover-index-grid{column-gap:12px}
+    .cover-index-link{min-height:56px;padding:9px 2px;font-size:12.5px}
     .award-list{grid-template-columns:1fr}
     .honor-cols{grid-template-columns:1fr}
     .flag b{display:none}
     .map-key{display:flex;flex-wrap:wrap;gap:5px 12px;margin-top:12px;color:var(--muted);font-size:11px}
+  }
+  @media(max-width:360px){
+    .cover-index-grid{grid-template-columns:1fr}
+    .cover-index-link{min-height:42px}
   }
 </style>
 </head>
@@ -334,7 +334,6 @@
     </a>
     <div class="hud-right">
       <span class="counter"><b id="cNow">01</b> / <span id="cTot">12</span></span>
-      <button class="menu-btn" id="menuBtn">目录 Index</button>
     </div>
   </header>
 
@@ -345,12 +344,6 @@
     <div class="dots" id="dots"></div>
     <button class="nav-btn" id="nextBtn"><span class="now" id="nextNow"></span>下一页 <span>→</span></button>
   </footer>
-
-  <div class="scrim" id="scrim"></div>
-  <nav class="index-menu" id="indexMenu">
-    <h3>Deck Index / 目录</h3>
-    <div id="idxList"></div>
-  </nav>
 
   <div class="lb" id="lb">
     <button class="lb-close" id="lbClose">×</button>
@@ -577,15 +570,6 @@ function titleOf(s){
   if(s.type==="contact") return "联系 · Contact";
   return s.title;
 }
-function kindOf(s){
-  if(s.type==="cover") return "Intro";
-  if(s.type==="about") return "Intro";
-  if(s.type==="visual") return "整合展示 · 全球参展";
-  if(s.type==="honors") return "Recognition";
-  if(s.type==="contact") return "Contact";
-  return s.kind;
-}
-
 function esc(x){return x;}
 
 function thumbHTML(m, gi, mi){
@@ -649,6 +633,10 @@ function buildProject(s){
 
 function buildCover(){
   const coverDots = COVER_IMAGES.map((_,i)=>`<button class="cover-dot${i===0?" active":""}" data-cover-goto="${i}" aria-label="切换到封面图 ${i+1}"></button>`).join("");
+  const projectLinks = DECK.map((s,i)=>({s,i})).filter(({s})=>s.type==="project"||s.type==="visual")
+    .map(({s,i})=>`<button class="cover-index-link" data-jump="${i}"><span class="n">${String(i).padStart(2,"0")}</span><span class="t">${titleOf(s)}</span></button>`).join("");
+  const moreLinks = DECK.map((s,i)=>({s,i})).filter(({s})=>["about","honors","contact"].includes(s.type))
+    .map(({s,i})=>`<button data-jump="${i}">${titleOf(s)}</button>`).join("");
   return `<div class="wrap"><div class="cover">
     <div class="cover-l">
       <span class="eyebrow">Wang Yusheng · AI Builder / Product</span>
@@ -659,7 +647,6 @@ function buildCover(){
         <div><span class="k">Focus</span>AI Agent · 智能硬件 · 功能策略 · 体验迭代</div>
         <div><span class="k">Contact</span>yushengw0702@gmail.com</div>
       </div>
-      <div class="cover-hint"><span class="kbd">→</span> 或点击右下角 <b>下一页</b> 开始浏览 · <span class="kbd">目录</span> 可跳转任意项目</div>
     </div>
     <div class="cover-r">
       <div class="cover-carousel">
@@ -673,6 +660,11 @@ function buildCover(){
       </div>
       <div class="badge"><b>AI Builder · Product Thinking</b><br><span>需求洞察 · 功能设计 · 效果验收 · 持续迭代</span></div>
     </div>
+    <nav class="cover-index" aria-label="作品集项目索引">
+      <div class="cover-index-head">项目索引 / PROJECTS</div>
+      <div class="cover-index-grid">${projectLinks}</div>
+      <div class="cover-index-more">${moreLinks}</div>
+    </nav>
   </div></div>`;
 }
 
@@ -799,16 +791,11 @@ const total=DECK.length;
 document.getElementById("cTot").textContent=String(total).padStart(2,"0");
 const prevBtn=document.getElementById("prevBtn"), nextBtn=document.getElementById("nextBtn");
 const dotsWrap=document.getElementById("dots"), progress=document.getElementById("progress");
-const idxList=document.getElementById("idxList");
 
 DECK.forEach((s,i)=>{
   const d=document.createElement("button"); d.className="dot"; d.onclick=()=>go(i); dotsWrap.appendChild(d);
-  const it=document.createElement("button"); it.className="idx-item";
-  it.innerHTML=`<span class="n">${String(i).padStart(2,"0")}</span><span><span class="tt">${titleOf(s)}</span><span class="tk">${kindOf(s)}</span></span>`;
-  it.onclick=()=>{go(i);closeMenu();};
-  idxList.appendChild(it);
 });
-const dots=[...dotsWrap.children], idxItems=[...idxList.children];
+const dots=[...dotsWrap.children];
 
 let coverIndex=0;
 function setCover(i){
@@ -834,7 +821,6 @@ function go(i){
   slides[cur].scrollTop=0;
   syncPreviewVideos();
   dots.forEach((d,k)=>d.classList.toggle("active",k===i));
-  idxItems.forEach((d,k)=>d.classList.toggle("active",k===i));
   document.getElementById("cNow").textContent=String(i+1).padStart(2,"0");
   progress.style.width=((i+1)/total*100)+"%";
   prevBtn.disabled=(i===0); nextBtn.disabled=(i===total-1);
@@ -852,8 +838,7 @@ nextBtn.onclick=()=>go(cur+1);
 
 stage.addEventListener("wheel",e=>{
   if(e.ctrlKey || Math.abs(e.deltaX)>Math.abs(e.deltaY) ||
-     document.getElementById("lb").classList.contains("open") ||
-     document.getElementById("indexMenu").classList.contains("open")) return;
+     document.getElementById("lb").classList.contains("open")) return;
   const slide=e.target.closest(".slide");
   if(slide!==slides[cur] || e.deltaY===0) return;
   const now=performance.now();
@@ -879,8 +864,7 @@ stage.addEventListener("wheel",e=>{
 let touchStart=null;
 stage.addEventListener("touchstart",e=>{
   if(e.touches.length!==1 || e.target.closest(".strip") ||
-     document.getElementById("lb").classList.contains("open") ||
-     document.getElementById("indexMenu").classList.contains("open")) return;
+     document.getElementById("lb").classList.contains("open")) return;
   const slide=e.target.closest(".slide");
   if(slide!==slides[cur]) return;
   touchStart={
@@ -908,17 +892,12 @@ document.addEventListener("keydown",e=>{
   }
   if(e.key==="ArrowRight"||e.key==="ArrowDown"||e.key===" "){e.preventDefault();go(cur+1);}
   if(e.key==="ArrowLeft"||e.key==="ArrowUp"){e.preventDefault();go(cur-1);}
-  if(e.key==="Escape"){closeMenu();}
 });
-
-/* menu */
-const menu=document.getElementById("indexMenu"), scrim=document.getElementById("scrim");
-document.getElementById("menuBtn").onclick=()=>{menu.classList.add("open");scrim.classList.add("open");};
-function closeMenu(){menu.classList.remove("open");scrim.classList.remove("open");}
-scrim.onclick=closeMenu;
 
 /* cover carousel */
 stage.addEventListener("click",e=>{
+  const jump=e.target.closest("[data-jump]");
+  if(jump){ go(Number(jump.dataset.jump)); return; }
   const step=e.target.closest("[data-cover-step]");
   if(step){
     e.preventDefault();
