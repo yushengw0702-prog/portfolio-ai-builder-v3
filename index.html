@@ -96,10 +96,12 @@
   .cover-personal{margin-top:20px;display:flex;flex-wrap:wrap;gap:5px 18px;font-size:12px;line-height:1.6;color:var(--muted)}
   .cover-index{margin:52px 0 12px;padding:18px 22px 14px;background:rgba(255,255,255,.76);border:1px solid rgba(216,216,209,.86);border-radius:8px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
   .cover-index-head{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--muted);margin-bottom:8px}
-  .cover-index-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:16px}
-  .cover-index-link{display:flex;align-items:flex-start;gap:9px;width:100%;min-width:0;min-height:54px;padding:11px 2px;text-align:left;border:0;border-bottom:1px solid var(--line);background:none;color:var(--ink);cursor:pointer;font:500 13px/1.38 var(--sans);transition:color .2s}
+  .cover-index-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+  .cover-index-link{display:flex;flex-direction:column;gap:9px;width:100%;min-width:0;padding:0 0 12px;text-align:left;border:0;border-bottom:1px solid var(--line);background:none;color:var(--ink);cursor:pointer;font:500 13px/1.38 var(--sans);transition:color .2s}
   .cover-index-link:hover,.cover-index-link:focus-visible{color:var(--accent-ink)}
   .cover-index-link:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .cover-index-image{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:4px;background:var(--card)}
+  .cover-index-label{display:flex;align-items:flex-start;gap:9px;width:100%}
   .cover-index-link .n{flex:none;font:11px/1.6 var(--mono);color:var(--accent)}
   .cover-index-link .t{min-width:0;overflow-wrap:anywhere}
   .cover-index-more{display:flex;flex-wrap:wrap;gap:8px 22px;padding-top:12px}
@@ -321,8 +323,8 @@
     .cover-index{padding:16px}
     .home-background{margin-top:48px}
     .about-grid{grid-template-columns:1fr}
-    .cover-index-grid{column-gap:12px}
-    .cover-index-link{min-height:56px;padding:9px 2px;font-size:12.5px}
+    .cover-index-grid{gap:14px 12px}
+    .cover-index-link{font-size:12.5px}
     .award-list{grid-template-columns:1fr}
     .honor-cols{grid-template-columns:1fr}
     .flag b{display:none}
@@ -333,7 +335,6 @@
     .cover-title-line{font-size:26px}
     .cover-title-last{font-size:21px}
     .cover-index-grid{grid-template-columns:1fr}
-    .cover-index-link{min-height:42px}
   }
 </style>
 </head>
@@ -401,6 +402,7 @@ const DECK = [
   { type:"cover" },
 
   { type:"project", kind:"重点项目 · 安克黑客松", index:"01",
+    cover:A+"homepulse/home-pulse-overview.jpg",
     title:"Anker黑客松 · 智能安防｜Home Pulse-AI 家庭状态感知与提醒系统",
     sub:"首届黑客松挑战赛 / 决赛入围 · 队长 / 场景洞察与产品定义",
     intro:"作为队长参与 Anker 首届黑客松挑战赛决赛入围作品。针对用户人在外时被摄像头通知频繁打断、却仍要自己判断家中情况的问题，提出 Home Pulse：把大量安防事件汇总为持续可读的家庭状态，通过家庭记忆、状态面板与注意力路由，只在真正值得介入时提醒。",
@@ -427,6 +429,7 @@ const DECK = [
     ]},
 
   { type:"project", kind:"重点项目 · AI Builder", index:"02",
+    cover:A+"programmingcat/show-1.jpg",
     title:"编程猫 · AI Agent + NFC 儿童创造力硬件",
     sub:"场景定义 / AI Agent · NFC 软硬联动 / 功能原型",
     intro:"在点猫科技（编程猫）创新业务中，探索面向儿童创造力的 AI 产品：孩子「拍一拍 / 画一画」，AI Agent 将内容识别并生成可交互小游戏，再结合 NFC 实体卡片连接数字内容与实体触点。项目重点是把用户场景转化为可测试的 AI 功能原型。",
@@ -448,6 +451,7 @@ const DECK = [
     ]},
 
   { type:"project", kind:"重点项目 · 智能可穿戴", index:"03",
+    cover:A+"wearable1/board-1.jpg",
     title:"BLISSHABIT · BFRBs 行为干预可穿戴",
     sub:"需求洞察 / 智能硬件原型 / 体验迭代",
     intro:"面向拔毛癖、抠皮等身体聚焦重复行为（BFRBs）的智能可穿戴配饰。完整走通「用户调研 → 行为洞察 → 硬件原型 → 可用性迭代测试」闭环；关键设计判断是把医疗设备做成时尚配饰、弱化医疗感，用情绪价值与差异化人群切入。",
@@ -462,6 +466,7 @@ const DECK = [
     ]},
 
   { type:"project", kind:"核心项目 · 智能硬件", index:"04",
+    cover:A+"bci/scene-1.jpg",
     title:"虚之实 · 脑机 + VR 青少年心理干预",
     sub:"非侵入式脑机 + AI 策略 / 场景洞察 / 产品定义",
     intro:"面向青少年心理干预场景，结合非侵入式脑机信号、AI 策略与 VR 训练体验，梳理学生端和家长端的使用场景与需求，参与产品定义、功能规划与双端交互设计。重点关注评估、训练和反馈链路的可理解性与体验闭环。",
@@ -485,6 +490,7 @@ const DECK = [
     ]},
 
   { type:"project", kind:"核心项目 · 智能可穿戴", index:"05",
+    cover:A+"echo-guard-slides/slide-01.png",
     title:"Echo Guard · 高速运动感知增强背带",
     sub:"骑行安全 / ICF 模型 · 事故数据驱动",
     intro:"面向高速骑行盲区的安全感知可穿戴。用 ICF 模型拆解骑行者的感知与行动链路，结合事故数据定义场景，通过体感反馈增强对后方来车与盲区的感知。以原型测试检验提醒时机与反馈方式。",
@@ -502,6 +508,7 @@ const DECK = [
     ]},
 
   { type:"project", kind:"整合展示 · 全国获奖", index:"06",
+    cover:A+"arvr/xunzi-2.jpg",
     title:"AR / VR / MR 教育与文创（整合）",
     sub:"产品负责人 / 苹果 · 腾讯 全国奖项",
     intro:"大学期间以产品负责人身份参与的一组 AR/VR/MR 交互项目，多次获苹果移动应用创新赛、腾讯高校游戏创意大赛全国奖。以下为代表作，均可点击跳转高清视频演示。",
@@ -543,6 +550,7 @@ const DECK = [
     ]},
 
   { type:"project", kind:"整合展示 · 交互装置", index:"07",
+    cover:A+"interactive/luminous-01.jpg",
     title:"交互装置（整合）",
     sub:"公共空间 / 输入方式 / 光影反馈",
     intro:"围绕公共空间中的互动行为与共同注意力，梳理参与者的场景和输入方式，设计可感知的光影反馈，并通过现场体验观察装置如何引导人与环境互动。",
@@ -568,7 +576,7 @@ const DECK = [
         {type:"img", src:A+"interactive/luminous-05.jpg", cap:"数字交互装置 · 现场图"}
       ]}
     ]},
-  { type:"visual" },
+  { type:"visual", cover:A+"visual/poster-jin.jpg" },
   { type:"honors" },
   { type:"contact" }
 ];
@@ -650,7 +658,7 @@ function buildCover(){
   const age = today.getFullYear() - 2001 - (today.getMonth() < 6 ? 1 : 0);
   const coverDots = COVER_IMAGES.map((_,i)=>`<button class="cover-dot${i===0?" active":""}" data-cover-goto="${i}" aria-label="切换到封面图 ${i+1}"></button>`).join("");
   const projectLinks = DECK.map((s,i)=>({s,i})).filter(({s})=>s.type==="project"||s.type==="visual")
-    .map(({s,i})=>`<button class="cover-index-link" data-jump="${i}"><span class="n">${String(i).padStart(2,"0")}</span><span class="t">${titleOf(s)}</span></button>`).join("");
+    .map(({s,i})=>`<button class="cover-index-link" data-jump="${i}"><img class="cover-index-image" src="${thumbSrc(s.cover)}" loading="lazy" decoding="async" alt=""><span class="cover-index-label"><span class="n">${String(i).padStart(2,"0")}</span><span class="t">${titleOf(s)}</span></span></button>`).join("");
   const moreLinks = DECK.map((s,i)=>({s,i})).filter(({s})=>["honors","contact"].includes(s.type))
     .map(({s,i})=>`<button data-jump="${i}">${titleOf(s)}</button>`).join("");
   return `<div class="wrap"><div class="cover">
